@@ -1,0 +1,30 @@
+<div th:fragment="menu">
+<!-- Sidebar -->
+    <div class="bg-white border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><img th:src="@{/img/logo.png}" style="max-width: 200px"> </div>
+      <div class="list-group list-group-flush pl-2">
+        <ul class="list-unstyled components " id="accordion2" >
+               	<div th:each="menu:${menu}"> 
+                <li class="mt-2 " >
+
+                    <a th:href="@{'#'+${menu.code}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-link"  th:text="${menu.name}" >
+	                    Quản trị hệ thống 
+	                    
+                    </a>
+                   
+                   	 <ul class="collapse list-unstyled  ml-3 " th:id="${menu.code}" th:each="action:${menu.actions}" data-parent="#accordion2">
+                   	 	
+                        <li>
+                            <a th:href="@{${action.url}}" class="text-link" th:text="${action.name}">Quản lý bài viết</a>
+                        </li>
+                                         
+                    </ul>
+                   
+                </li>
+                </div>
+               
+            </ul>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+</div>
